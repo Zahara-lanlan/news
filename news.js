@@ -18,14 +18,15 @@ return $.html()
 };
 
 //生成每一条新闻
-const creatNewsItemHtml = (itemData) => {
+const creatNewsItemHtml = (itemData,index) => {
+    console.log(index)
   return `  <li class="news">
     <a href="javascript:;">
         <img src="${itemData.imgUrl}" alt="">
     </a>
     <div>
         <h3>
-            <a href="javascript:;">${itemData.title}</a>
+            <a href="/detail?p=${index}">${itemData.title}</a>
         </h3>
         <div class="info">
             <span class="tips"><span>${itemData.from}</span></span>
@@ -40,7 +41,7 @@ function createNewsListInnerHtml(){
     let num=0;
     getCurrentPageNewsDataList().forEach((item, index) => {
     //   console.log(item);
-      result += creatNewsItemHtml(item);
+      result += creatNewsItemHtml(item,index+1);
       num++;
  //   console.log(result);
     });
